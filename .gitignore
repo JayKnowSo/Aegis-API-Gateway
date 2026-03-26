@@ -41,3 +41,7 @@ venv/
 *.db
 t.ini
 how --stat HEAD~4
+*.csv
+.aws/
+*.csv
+aws/

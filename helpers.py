@@ -28,4 +28,4 @@ def get_yes_no(prompt):
         if answer in ["yes", "no"]:
             return answer # Exits loop when valid
         else:
-            print("Please enter 'yes' or 'no'.") 
+            print("Please enter 'yes' or 'no'.")

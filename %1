@@ -1,0 +1,8 @@
+ImportError while loading conftest '/home/devnow/Custom_Greeting_App/tests/conftest.py'.
+tests/conftest.py:9: in <module>
+    from app.main import app
+app/main.py:14: in <module>
+    from app.infrastructure.functions import engine
+app/infrastructure/functions.py:10: in <module>
+    from app.infrastructure.database import SessionRecord, engine
+E   ImportError: cannot import name 'SessionRecord' from 'app.infrastructure.database' (/home/devnow/Custom_Greeting_App/app/infrastructure/database.py)
