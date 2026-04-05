@@ -1,7 +1,6 @@
 # Security Pipeline
 # Runs on every push and pull request to main
-# Three jobs: test suite, SAST scan, then CVE scan
-# Pipeline fails if CRITICAL CVEs found or Semgrep finds issues
+# Three jobs: test suite, SAST + secret scan, then CVE scan
 name: Security Pipeline
 on:
   push:
@@ -32,16 +31,22 @@ jobs:
           pytest tests/ --tb=short -q
 
   sast:
-    name: SAST Scan (Semgrep)
+    name: SAST Scan (Semgrep + Gitleaks)
     runs-on: ubuntu-latest
     needs: test
     steps:
       - name: Checkout code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
       - name: Run Semgrep SAST
         uses: semgrep/semgrep-action@713efdd345f3035192eaa63f56867b88e63e4e5d
         with:
           config: p/python p/secrets p/owasp-top-ten
+      - name: Run Gitleaks secret scan
+        uses: gitleaks/gitleaks-action@dcedce43c6f43de0b836d1fe38946645c9c638dc
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   trivy-scan:
     name: Container CVE Scan
