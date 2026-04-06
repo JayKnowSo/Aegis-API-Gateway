@@ -45,3 +45,4 @@ how --stat HEAD~4
 .aws/
 *.csv
 aws/
+chosen-crew/
