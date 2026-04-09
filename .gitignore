@@ -46,3 +46,4 @@ how --stat HEAD~4
 *.csv
 aws/
 chosen-crew/
+cosign.key
