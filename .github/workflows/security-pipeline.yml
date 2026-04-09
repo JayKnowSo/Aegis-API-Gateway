@@ -87,7 +87,7 @@ jobs:
           COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
           COSIGN_PASSWORD: ""
         run: |
-          cosign sign --key env://COSIGN_PRIVATE_KEY --yes security-scan-image:latest
+          cosign sign --key env://COSIGN_PRIVATE_KEY --no-tlog-upload --yes security-scan-image:latest
       - name: Run Trivy CVE scan
         uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1
         with:
