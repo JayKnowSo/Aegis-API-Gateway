@@ -45,6 +45,10 @@ jobs:
         uses: gitleaks/gitleaks-action@dcedce43c6f43de0b836d1fe38946645c9c638dc
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: OPA policy gate
+        run: |
+          pip install --quiet opa-python-client 2>/dev/null || true
+          python3 opa/check_dockerfile.py
 
   sbom:
     name: SBOM Generation + Vulnerability Scan
@@ -77,21 +81,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
       - name: Build Docker image
-        run: |
-          docker build -t security-scan-image:latest .
-          docker save security-scan-image:latest -o /tmp/image.tar
+        run: docker build -t security-scan-image:latest .
       - name: Install Cosign
         run: |
           curl -sSfL https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64 -o /usr/local/bin/cosign
           chmod +x /usr/local/bin/cosign
-      - name: Sign image tarball
+      - name: Sign Docker image
         env:
           COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
           COSIGN_PASSWORD: ""
         run: |
-          cosign sign-blob --key env://COSIGN_PRIVATE_KEY --tlog-upload=false /tmp/image.tar > /tmp/image.tar.sig
-          echo "Image tarball signed successfully"
-          ls -la /tmp/image.tar.sig
+          cosign sign --key env://COSIGN_PRIVATE_KEY --yes security-scan-image:latest
       - name: Run Trivy CVE scan
         uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1
         with:
