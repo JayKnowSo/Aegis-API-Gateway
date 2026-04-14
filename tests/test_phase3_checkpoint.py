@@ -1,6 +1,7 @@
 import subprocess
 import json
 import os
+import pytest
 
 def test_actions_pinned_to_sha():
     """All GitHub Actions must use SHA hashes not tags"""
