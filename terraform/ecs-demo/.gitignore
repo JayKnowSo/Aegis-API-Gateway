@@ -1,0 +1,14 @@
+# Terraform state — CONTAINS VALUES IN PLAINTEXT. Never commit.
+*.tfstate
+*.tfstate.*
+
+# Local plugin cache (machine-specific, large)
+.terraform/
+
+# Variable files (may hold secrets)
+*.tfvars
+*.tfvars.json
+
+# Plan output / crash logs
+*.tfplan
+crash.log

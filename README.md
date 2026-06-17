@@ -2,7 +2,7 @@
 
 > A production-grade cloud security engineering portfolio — built phase by phase, hardened layer by layer.
 
-[![CI Pipeline](https://img.shields.io/github/actions/workflow/status/JayKnowSo/aegis-api-gateway/ci.yml?label=CI%20Pipeline&style=flat-square)](https://github.com/JayKnowSo/aegis-api-gateway/actions)
+[![CI Pipeline](https://img.shields.io/github/actions/workflow/status/JayKnowSo/aegis-api-gateway/security-pipeline.yml?label=CI%20Pipeline&style=flat-square)](https://github.com/JayKnowSo/aegis-api-gateway/actions)
 [![Tests](https://img.shields.io/badge/tests-57%20passing-brightgreen?style=flat-square)]()
 [![CVEs](https://img.shields.io/badge/critical%20CVEs-0-brightgreen?style=flat-square)]()
 [![Checkov](https://img.shields.io/badge/checkov-32%2F32-brightgreen?style=flat-square)]()
