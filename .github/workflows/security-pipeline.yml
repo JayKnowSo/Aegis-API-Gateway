@@ -123,8 +123,7 @@ jobs:
           COSIGN_PASSWORD: ""
         run: |
           docker save security-scan-image:latest -o /tmp/image.tar
-          cosign sign-blob --key cosign.key /tmp/image.tar \
-            --output-signature /tmp/image.tar.sig
+          cosign sign-blob --key cosign.key --yes --bundle /tmp/image.tar.bundle /tmp/image.tar
       - name: Run Trivy CVE scan
         uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1
         with:
