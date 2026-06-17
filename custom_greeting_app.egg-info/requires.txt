@@ -1,5 +1,0 @@
-fastapi
-sqlmodel
-psycopg2-binary
-passlib[bcrypt]
-pytest

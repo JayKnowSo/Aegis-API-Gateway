@@ -1,8 +1,0 @@
-Metadata-Version: 2.4
-Name: custom_greeting_app
-Version: 0.1.0
-Requires-Dist: fastapi
-Requires-Dist: sqlmodel
-Requires-Dist: psycopg2-binary
-Requires-Dist: passlib[bcrypt]
-Requires-Dist: pytest

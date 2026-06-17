@@ -47,3 +47,17 @@ how --stat HEAD~4
 aws/
 chosen-crew/
 cosign.key
+
+# runtime data + build artifacts
+*.db
+greetings_log.json
+session_counts.json
+*.egg-info/
+awscliv2.zip
+
+# Terraform state + plans (may contain secrets — never commit)
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+.terraform/
