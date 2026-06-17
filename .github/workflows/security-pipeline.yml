@@ -120,11 +120,10 @@ jobs:
           chmod +x /usr/local/bin/cosign
       - name: Sign Docker image
         env:
-          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
           COSIGN_PASSWORD: ""
         run: |
           docker save security-scan-image:latest -o /tmp/image.tar
-          cosign sign-blob --key env://COSIGN_PRIVATE_KEY /tmp/image.tar \
+          cosign sign-blob --key cosign.key /tmp/image.tar \
             --output-signature /tmp/image.tar.sig
       - name: Run Trivy CVE scan
         uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1
