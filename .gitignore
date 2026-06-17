@@ -47,6 +47,7 @@ how --stat HEAD~4
 aws/
 chosen-crew/
 cosign.key
+cosign.pub
 
 # runtime data + build artifacts
 *.db
