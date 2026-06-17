@@ -31,7 +31,7 @@ This is not a tutorial project. It is a demonstration of how security is built i
 | Secret Scanning | Gitleaks — 63 commits clean | ✅ |
 | SBOM | Syft CycloneDX — 510 components inventoried | ✅ |
 | Dependency Scan | Grype — 0 CRITICAL findings | ✅ |
-| Image Signing | Cosign sign-blob (tarball), keypair committed | ✅ |
+| Image Signing | Cosign sign-blob (tarball), ephemeral keypair in CI | ✅ |
 | Policy Enforcement | OPA/Rego gate — blocks non-root containers at CI | ✅ |
 | DAST | OWASP ZAP baseline — 0 failures, 65 passes | ✅ |
 | IaC Security | Terraform + Checkov 32/32, pre-commit hook, blocking CI gate | ✅ |

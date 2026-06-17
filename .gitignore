@@ -62,3 +62,10 @@ awscliv2.zip
 *.tfplan
 tfplan
 .terraform/
+
+# Claude Code internal files
+.claude/
+CLAUDE.md
+
+# Local planning artifacts
+TODO.md
